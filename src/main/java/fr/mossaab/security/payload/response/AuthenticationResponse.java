@@ -1,7 +1,6 @@
 package fr.mossaab.security.payload.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import fr.mossaab.security.enums.TokenType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,5 +23,6 @@ public class AuthenticationResponse {
     private String refreshToken;
     @JsonProperty("token_type")
     private String tokenType;
-
+    @JsonProperty("is_enable")
+    private Boolean isEnable;
 }

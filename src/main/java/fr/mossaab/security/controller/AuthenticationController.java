@@ -110,6 +110,16 @@ public class AuthenticationController {
                 .header(HttpHeaders.SET_COOKIE,jwtCookie.toString())
                 .header(HttpHeaders.SET_COOKIE,refreshTokenCookie.toString())
                 .build();
+    }
 
+    @PostMapping("/confirm")
+    public ResponseEntity<String> confirmRegistration(@RequestParam String token) {
+        boolean isConfirmed = authenticationService.confirmUser(token);
+
+        if (isConfirmed) {
+            return ResponseEntity.ok("User confirmed successfully.");
+        } else {
+            return ResponseEntity.badRequest().body("Invalid or expired token.");
+        }
     }
 }
