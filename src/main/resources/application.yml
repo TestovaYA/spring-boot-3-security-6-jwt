@@ -13,6 +13,15 @@ spring:
         format_sql: true
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+  mail:
+    host: smtp-relay.brevo.com
+    port: 587
+    username: aaa@smtp-brevo.com
+    password: bbb
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.smtp.starttls.required: true
 server:
   port: 8086
 application:
