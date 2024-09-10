@@ -7,11 +7,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.List;
 
 @Builder
 @NoArgsConstructor
@@ -19,11 +17,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "_user")
-public class User implements UserDetails { // make our app User a spring security User
-/*
-    we have two options : implements the UserDetails interface or create a user class that extends User spring class which also
-    implements UserDetails
- */
+public class User implements UserDetails {
     @Id
     @GeneratedValue
     private Long id;
@@ -31,11 +25,13 @@ public class User implements UserDetails { // make our app User a spring securit
     private String lastname;
     private String email;
     private String password;
+    private boolean isVip;
+    private String confirmationToken;
+    private boolean isEnabled;
 
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    // we should return a list of roles
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return role.getAuthorities();
@@ -68,6 +64,6 @@ public class User implements UserDetails { // make our app User a spring securit
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return isEnabled;
     }
 }

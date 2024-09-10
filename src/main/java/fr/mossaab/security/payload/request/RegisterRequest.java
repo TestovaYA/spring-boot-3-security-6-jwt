@@ -28,4 +28,5 @@ public class RegisterRequest {
     private String password;
     @NotNull
     private Role role;
+    boolean isVip;
 }

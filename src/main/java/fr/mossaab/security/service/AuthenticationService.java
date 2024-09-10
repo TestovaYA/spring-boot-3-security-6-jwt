@@ -7,4 +7,6 @@ import fr.mossaab.security.payload.response.AuthenticationResponse;
 public interface AuthenticationService {
     AuthenticationResponse register(RegisterRequest request);
     AuthenticationResponse authenticate(AuthenticationRequest request);
+    void sendConfirmationEmail(String email, String token);
+    boolean confirmUser(String token);
 }
